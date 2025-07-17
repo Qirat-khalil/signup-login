@@ -23,7 +23,7 @@ signbtn && signbtn.addEventListener("click", async () => {
                 email: useremail.value,
                 password: userpass.value,
                 options: {
-                    full_name: fullName,
+                    full_name: fullName.value,
                 }
             })
             console.log(data);
@@ -94,7 +94,7 @@ async function disProf() {
             if (document.querySelector(".prof-avatar")) {
                 document.querySelector(".prof-avatar").src = user.user_metadata?.avatar_url || 'https://www.gravatar.com/avatar/?d=mp'
                 document.querySelector(".user-name").textContent = user.user_metadata?.full_name || user.email
-                document.querySelector(".user-email").textContent = user.user_metadata?.user.email
+                document.querySelector(".user-email").textContent = user.email
                 if (window.location.pathname.includes("index.html")) {
                     window.location.href = "post.html"
                 } else if (!window.location.pathname.includes("index.html") && window.location.pathname.includes("login.html")) {
@@ -113,16 +113,16 @@ async function disProf() {
 
 // returning Google redirect
 document.addEventListener("DOMContentLoaded", async () => {
-    if (window.location.pathname.includes("access_token")) {
+    if (window.location.href.includes("access_token")) {
 
-        const { data: { session }, } = await client.auth.getSession();
+        const { data: { session }, } = await merg.auth.getSession();
         if (session) {
             window.location.href = "post.html"
         }
         if (!window.location.pathname.includes("index.html") && window.location.pathname.includes("login.html")) {
             window.location.href = "index.html"
-            disProf()
+            // disProf()
         }
-
+      disProf()
     }
 })

@@ -3,14 +3,28 @@
     margin: 0;
     box-sizing: border-box;
 }
-#navbarNav{
-    margin-right: 25px;
+.prof-sec {
     display: flex;
-    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
 }
-.Logout{
-    margin-left: 25px;
-    background-color: rgb(255, 0, 119);
-    display: flex;
-    justify-content: flex-end;
+
+.prof-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.logoutbtn {
+    margin-left: 10px;
+}
+
+
+.card {
+  max-width: 400px;
+  margin: auto;
+}
+
+textarea.form-control {
+  resize: none;
 }
