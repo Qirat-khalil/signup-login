@@ -1,0 +1,183 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background: #f0f2f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+    background: linear-gradient(to right, #e0eafc, #cfdef3);
+}
+
+
+.authContainer{
+      border: 1px solid #ccc;
+  background-color: white;
+  width: 400px;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+.authContainer h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.emlab,
+.passlab {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.emlab label,
+.passlab label {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #555;
+}
+.name label{
+    
+  /* width: 100%; */
+    font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #555;
+}
+ .fulname{
+    margin-top: 15px;
+   width: 100%;
+  padding: 10px;
+  border: 1px solid #aaa;
+  border-radius: 8px;
+  outline: none;
+  font-size: 15px;
+  transition: border 0.3s;
+ }
+/* .userpass { */
+  .useremail{
+  padding: 10px;
+  border: 1px solid #aaa;
+  border-radius: 8px;
+  outline: none;
+  font-size: 15px;
+  transition: border 0.3s;
+}
+
+.userpass {
+  padding: 10px;
+  border: 1px solid #aaa;
+  border-radius: 8px;
+  outline: none;
+  font-size: 15px;
+  transition: border 0.3s;
+  width: 100%;
+}
+i{
+  margin-left: -25px;
+  
+}
+
+.useremail:focus,
+.userpass:focus {
+  border-color: #4a90e2;
+}
+
+.signbtn {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+transition: background 0.3s;
+
+}
+.goobtn{
+ display: block;
+ /* justify-content: center; */
+ margin: auto;
+  width: 60%;
+  padding: 12px;
+  margin-block: 25px 10px;
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: center;
+transition: background 0.3s;
+}
+
+.btn:hover {
+  background-color: #357abd;
+}
+
+.message {
+  margin-top: 15px;
+  font-size: 15px;
+  text-align: center;
+  font-weight: 600;
+  margin-block: 15px;
+}
+
+.logemail{
+  padding: 10px;
+  border: 1px solid #aaa;
+  border-radius: 8px;
+  outline: none;
+  font-size: 15px;
+  transition: border 0.3s;
+}
+
+.logpass {
+  padding: 10px;
+  border: 1px solid #aaa;
+  border-radius: 8px;
+  outline: none;
+  font-size: 15px;
+  transition: border 0.3s;
+  width: 100%;
+}
+
+i{
+  margin-left: -25px;
+  
+}
+
+.logemail:focus,
+.logpass:focus {
+  border-color: #4a90e2;
+}
+
+.logbtn {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+transition: background 0.3s;
+
+}
+
+.logbtn:hover {
+  background-color: #357abd;
+}

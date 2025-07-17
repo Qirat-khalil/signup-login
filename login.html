@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="main">
+    <h1>Login Form</h1>
+
+    <div class="emlab">
+      <label for="">UserEmial:</label>
+      <input type="email" class="logemail">
+    </div>
+    <br>
+    <br>
+
+    <div class="passlab">
+      <label for="">UserPassword:</label>
+      <div><input type="password" class="logpass"><i class="fa-solid fa-eye" id="icon"></i></div>
+    </div>
+    <button class="logbtn">login</button>
+    <br>
+    ________________________or________________________
+    <button class="goobtn">Continue with Google</button>
+  </div>
+
+  <div class="loadmain">
+    <div class="loader" id="load"></div>
+  </div>
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <!-- <script src="app.js"></script> -->
+  <script src="login.js"></script>
+
+</body>
+
+<!-- signupForm.addEventListener("submit", async (e) => {
+  e.preventDefault(); // page reload se rokta hai
+
+  const email = e.target.elements["signup-email"].value;
+  const password = e.target.elements["signup-password"].value;
+  const fullName = e.target.elements["signup-name"].value;
+  const avatarUrl = e.target.elements["signup-avatar"].value;
+
+  const { error } = await supabase.auth.signUp({
+    email,
+    password,
+    options: {
+      data: {
+        full_name: fullName,
+        avatar_url: avatarUrl,
+      },
+    },
+  });
+
+  if (error) {
+    alert(error.message);
+    return;
+  }
+
+  alert("Check your email for confirmation!");
+});
+
+loginForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const email = e.target.elements["login-email"].value;
+  const password = e.target.elements["login-password"].value;
+
+  const { error } = await supabase.auth.signInWithPassword({
+    email,
+    password,
+  });
+
+  if (error) {
+    alert(error.message);
+    return;
+  }
+
+  showProfile(); // user ko profile dikhani hai
+});
+
+
+async function showProfile() {
+  const { data: { user } } = await supabase.auth.getUser();
+
+  document.getElementById("profile-name").textContent = user.user_metadata?.full_name || "No Name";
+  document.getElementById("profile-email").textContent = user.email;
+  document.getElementById("profile-id").textContent = user.id;
+  document.getElementById("profile-created").textContent = new Date(user.created_at).toLocaleString();
+  document.getElementById("profile-avatar").src = user.user_metadata?.avatar_url || "https://www.gravatar.com/avatar/?d=mp";
+
+  authContainer.classList.add("hidden");
+  profileContainer.classList.remove("hidden");
+}
+
+
+logoutBtn.addEventListener("click", async () => {
+  await supabase.auth.signOut();
+  profileContainer.classList.add("hidden");
+  authContainer.classList.remove("hidden");
+});
+
+
+
+<div id="profile-container" class="hidden">
+  Profile Info -->
+<!-- </div> -->

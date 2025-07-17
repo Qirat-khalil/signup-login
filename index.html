@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="authContainer">
+        <h1>Sign Up Form</h1>
+
+        <div class="name">
+            <label for="">Full Name</label>
+            <input type="text" class="fulname">
+        </div>
+        <br>
+        <div class="emlab">
+            <label for="">UserEmial:</label>
+            <input type="email" class="useremail">
+        </div>
+        <!-- <br> -->
+        <div class="passlab">
+            <label for="">UserPassword:</label>
+            <div><input type="password" class="userpass" ><i class="fa-solid fa-eye" id="icon"></i></div>
+        </div>
+        <br>
+        <!-- <div class="message" style="margin-top:10px; color:green;"></div> -->
+        <button class="signbtn">Sgn Up</button><br>
+        ________________________or________________________
+        <button class="goobtn">Continue with Google</button>
+    </div>
+
+
+    <!-- <a href="login.html">go login page</a> -->
+    <div class="loadmain"> 
+        <div class="loader" id="load"></div>
+</div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="app.js"></script>
+</body>

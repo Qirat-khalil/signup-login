@@ -1,0 +1,16 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+#navbarNav{
+    margin-right: 25px;
+    display: flex;
+    justify-content: flex-end;
+}
+.Logout{
+    margin-left: 25px;
+    background-color: rgb(255, 0, 119);
+    display: flex;
+    justify-content: flex-end;
+}
