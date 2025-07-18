@@ -35,15 +35,15 @@ signbtn && signbtn.addEventListener("click", async () => {
 
             } else {
                 alert("Sign up successful! Check your email for verification link.");
-                // window.location.href = "post.html"; // Uncomment if redirect needed
-                window.location.href = "login.html"
+                window.location.href = "post.html"; // Uncomment if redirect needed
+                // window.location.href = "login.html"
             }
         } catch {
             console.log(error.message);
             alert("Something went wrong: " + error.message);
         }
 
-    }else{
+    } else {
         alert("please fill the field")
     }
 
@@ -123,6 +123,40 @@ document.addEventListener("DOMContentLoaded", async () => {
             window.location.href = "index.html"
             // disProf()
         }
-      disProf()
+    }
+    disProf()
+})
+
+
+// add post
+let submitPost = document.querySelector(".submitPost")
+
+submitPost && submitPost.addEventListener("click", async () => {
+
+    let posTitt = document.getElementById("post-title").value.trim()
+    let posDes = document.getElementById("post-desc").value.trim()
+
+    // console.log(posTitt, posDes);
+    try {
+        const { data: { user } } = await merg.auth.getUser();
+        console.log(user.id);
+
+        const { data,error } = await merg.from('post').insert([
+            {
+                uid: user.id,
+                tittle: posTitt,
+                description: posDes
+            },
+        ])
+        if (data) {
+            alert("posy successdully createf")
+            window.location.href = "my-blog.html"
+        }
+        else {
+            console.log(error.message);
+        }
+    } catch (error) {
+        console.log(error?.message);
+
     }
 })
