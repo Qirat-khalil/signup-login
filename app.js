@@ -43,7 +43,7 @@ signbtn && signbtn.addEventListener("click", async () => {
             alert("Something went wrong: " + error.message);
         }
 
-    }else{
+    } else {
         alert("please fill the field")
     }
 
@@ -123,6 +123,6 @@ document.addEventListener("DOMContentLoaded", async () => {
             window.location.href = "index.html"
             // disProf()
         }
-      disProf()
     }
+    disProf()
 })
