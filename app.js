@@ -128,7 +128,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 })
 
 
-// add post
+// add post 
 let submitPost = document.querySelector(".submitPost")
 
 submitPost && submitPost.addEventListener("click", async () => {
@@ -141,7 +141,7 @@ submitPost && submitPost.addEventListener("click", async () => {
         const { data: { user } } = await merg.auth.getUser();
         console.log(user.id);
 
-        const { data,error } = await merg.from('post').insert([
+        const { data, error } = await merg.from('post').insert([
             {
                 uid: user.id,
                 tittle: posTitt,
@@ -160,3 +160,79 @@ submitPost && submitPost.addEventListener("click", async () => {
 
     }
 })
+
+// read all post
+
+if (window.location.pathname == "/all-blog.html") {
+
+    const current = document.getElementById('current');
+    current.style.textDecoration = 'underline red';
+    try {
+        const readAllPso = async () => {
+            const { data, error } = await merg.from('posts').select();
+            if (data) {
+                console.log(data);
+                const box = document.querySelector(".container")
+                box.innerHTML = data.map(({ id, tittle, description }) => {
+                    console.log(tittle, description);
+
+                    return (`<div id='${id}' class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">${tittle}</h5>
+                            <p class="card-text">${description}</p>
+                        </div>
+                    </div>`)
+
+                }).join()
+            } else {
+                console.log(error);
+
+            }
+            readAllPso()
+        }
+    } catch (error) {
+        console.log(error.message);
+
+    }
+}
+
+
+
+
+// my post
+
+if (window.location.pathname == "/my-blog.html") {
+    try {
+        const myPost = async () => {
+            const { data: { user } } = await merg.auth.getUser();
+            const { data, error } = await merg
+                .from('posts')
+                .select()
+                .eq("user_id", user.id)
+            if (data) {
+                let myAllPost = document.querySelector(".myallPost")
+                myAllPost.innerHTML = data.map((id, tittle, description) => {
+
+                    console.log(tittle, description);
+
+                    return (`<div id='${id}' class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">${tittle}</h5>
+                            <p class="card-text">${description}</p>
+                        </div>
+                    </div>`)
+                })
+
+            } else {
+                console.log(error);
+
+            }
+        }
+
+    } catch (error) {
+        console.log(error);
+
+    }
+}
+
+myAllPost()

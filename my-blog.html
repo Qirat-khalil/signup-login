@@ -1,14 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="post.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
 </head>
+</head>
+
 <body>
-    
-    <h1>hello</h1>
-    <h1>fyh</h1>
+
+    <!-- navbar staart -->
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container">
+            <a class="navbar-brand" href="#">My Post</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                   <ul class="navbar-nav m-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active " href="/all-blog.html" id="current" >All Blogs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/my-blog.html"  id="active">My Blogs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/post.css">Home</a>
+                    </li>
+                </ul>
+
+                <!-- Profile Section -->
+                <div class="d-flex align-items-center bg-body-secondary rounded p-2 ms-auto">
+                    <img src="profile.jpg" alt="Avatar" class="prof-avatar me-2">
+                    <div>
+                        <h6 class="mb-0 user-name">Qirat</h6>
+                        <small class="text-muted user-email">qirat@example.com</small>
+                    </div>
+                    <button class="btn btn-danger btn-sm ms-3 logoutbtn">Logout</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- navbar end -->
+
+    <div class="main container my-5">
+        <div class="card p-4 shadow rounded-4 bg-light">
+            <h3 class="mb-4">Add New Post</h3>
+
+            <div class="mb-3">
+                <label for="post-title" class="form-label">Title</label>
+                <input type="text" id="post-title" class="form-control" placeholder="Enter post title">
+            </div>
+
+            <div class="mb-3">
+                <label for="post-desc" class="form-label">Description</label>
+                <textarea id="post-desc" class="form-control" rows="5" placeholder="Enter post description"></textarea>
+            </div>
+
+            <button class="btn btn-primary w-100 submitPost">Add Post</button>
+        </div>
+    </div>
+
+    <div id="myallPost"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script>
+    <script src="app.js"></script>
 
 </body>
+
 </html>
