@@ -266,7 +266,7 @@ async function deletePost(postId) {
 
         }
     } catch (error) {
-      console.log(error);
+      console.log("asdjfsdaf");
       
     }
 }
