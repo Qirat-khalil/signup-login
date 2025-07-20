@@ -156,7 +156,7 @@ submitPost && submitPost.addEventListener("click", async () => {
             console.log(error.message);
         }
     } catch (error) {
-        console.log(error?.message);
+        // console.log(error?.message);
 
     }
 })
@@ -201,38 +201,73 @@ if (window.location.pathname == "/all-blog.html") {
 
 // my post
 
-if (window.location.pathname == "/my-blog.html") {
-    try {
-        const myPost = async () => {
-            const { data: { user } } = await merg.auth.getUser();
-            const { data, error } = await merg
-                .from('posts')
-                .select()
-                .eq("user_id", user.id)
-            if (data) {
-                let myAllPost = document.querySelector(".myallPost")
-                myAllPost.innerHTML = data.map((id, tittle, description) => {
+// if (window.location.pathname == "/my-blog.html") {
+// try {
+const myPost = async () => {
+    const { data: { user } } = await merg.auth.getUser();
+    const { data, error } = await merg
+        .from('posts')
+        .select()
+        .eq("user_id", user.id)
+    if (data) {
+        let myAllPost = document.querySelector(".myallPost")
+        myAllPost.innerHTML = data.map((id, tittle, description) => {
 
-                    console.log(tittle, description);
+            console.log(tittle, description);
 
-                    return (`<div id='${id}' class="card" style="width: 18rem;">
+            return (`<div id='${id}' class="card" style="width: 18rem;">
                         <div class="card-body">
                             <h5 class="card-title">${tittle}</h5>
                             <p class="card-text">${description}</p>
                         </div>
+
+                        <div>
+                            <button class="delbtn" onclick="deletePost(${id})">Delete</button>
+                              <button class="editbtn" onclick="edit()">Edit</button>
+                          </div>
                     </div>`)
-                })
+        })
 
-            } else {
-                console.log(error);
-
-            }
-        }
-
-    } catch (error) {
+    } else {
         console.log(error);
 
     }
 }
 
-myAllPost()
+// } catch (error) {
+//     console.log(error);
+
+// }
+// }
+
+if (window.location.pathname == "/my-blog.html") {
+    const current = document.getElementById('active');
+	current.style.textDecoration = 'underline red';
+    try {
+        myPost()
+    }catch (error){
+      console.log(error);
+    }
+}
+
+
+// delete button
+
+async function deletePost(postId) {
+    try {
+        const response = await merg
+            .from('post')
+            .delete()
+            .eq('id', postId)
+        if (response) {
+                alert("post deleted")
+        } else {
+            console.log(error);
+
+        }
+    } catch (error) {
+
+    }
+}
+
+
