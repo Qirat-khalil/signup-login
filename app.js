@@ -172,7 +172,7 @@ if (window.location.pathname == "/all-blog.html") {
             const { data, error } = await merg.from('posts').select();
             if (data) {
                 console.log(data);
-                const box = document.querySelector(".container")
+                const box = document.querySelector("#container")
                 box.innerHTML = data.map(({ id, tittle, description }) => {
                     console.log(tittle, description);
 
@@ -186,13 +186,13 @@ if (window.location.pathname == "/all-blog.html") {
                 }).join()
             } else {
                 console.log(error);
-
+                
             }
             readAllPso()
         }
     } catch (error) {
         console.log(error.message);
-
+        
     }
 }
 
