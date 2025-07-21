@@ -188,8 +188,8 @@ if (window.location.pathname == "/all-blog.html") {
                 console.log(error);
                 
             }
-            readAllPso()
         }
+        readAllPso()
     } catch (error) {
         console.log(error.message);
         
