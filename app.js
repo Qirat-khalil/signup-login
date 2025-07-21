@@ -147,7 +147,7 @@ submitPost && submitPost.addEventListener("click", async () => {
                 tittle: posTitt,
                 description: posDes
             },
-        ])
+        ])      
         if (data) {
             alert("posy successdully createf")
             window.location.href = "my-blog.html"
@@ -206,16 +206,18 @@ if (window.location.pathname == "/all-blog.html") {
 const myPost = async () => {
     const { data: { user } } = await merg.auth.getUser();
     const { data, error } = await merg
-        .from('posts')
+        .from('post')
         .select()
-        .eq("user_id", user.id)
+        .eq("uid", user.id)
     if (data) {
+        console.log(data);
+        
         let myAllPost = document.querySelector(".myallPost")
         myAllPost.innerHTML = data.map((id, tittle, description) => {
 
             console.log(tittle, description);
 
-            return (`<div id='${id}' class="card" style="width: 18rem;">
+            return (`<div id='${id}' class="card" style="width: 18rem   background: #3d629bff; ; ">
                         <div class="card-body">
                             <h5 class="card-title">${tittle}</h5>
                             <p class="card-text">${description}</p>
