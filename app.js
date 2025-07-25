@@ -78,7 +78,7 @@ google && google.addEventListener("click", async () => {
             provider: 'google',
             options: {
                 redirectTo: window.location.origin + '/post.html',
-                redirectTo: "https://github.com/Qirat-khalil/signup-login",
+                redirectTo: "https://qirat-khalil.github.io/signup-login/",
                 queryParams: { access_type: 'offline', prompt: 'consent' },
             },
         });
