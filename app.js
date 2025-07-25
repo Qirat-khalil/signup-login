@@ -39,7 +39,7 @@ signbtn && signbtn.addEventListener("click", async () => {
                 // window.location.href = "login.html"
             }
         } catch {
-            console.log(error.message);
+            console.log(error?.message);
             alert("Something went wrong: " + error.message);
         }
 
@@ -77,8 +77,6 @@ google && google.addEventListener("click", async () => {
         const { error } = await merg.auth.signInWithOAuth({
             provider: 'google',
             options: {
-                // redirectTo: window.location.origin + '/post.html',
-                // redirectTo: "https://qirat-khalil.github.io/signup-login/",
                 redirectTo:redirect,
                 queryParams: { access_type: 'offline', prompt: 'consent' },
             },
