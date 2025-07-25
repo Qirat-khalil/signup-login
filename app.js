@@ -70,9 +70,9 @@ let google = document.querySelector(".goobtn")
 
 google && google.addEventListener("click", async () => {
     try {
-        let redirect = window.location.hostname === "127.0.01"
-        ? window.location.origin + "/post.html"
-        : window.location.origin + "/signup-login"
+        // let redirect = window.location.hostname === "127.0.01"
+        // ? window.location.origin + "/post.html"
+        // : window.location.origin + "/signup-login"
 
         const { error } = await merg.auth.signInWithOAuth({
             provider: 'google',
