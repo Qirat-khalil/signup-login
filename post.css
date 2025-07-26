@@ -28,3 +28,15 @@
 textarea.form-control {
   resize: none;
 }
+
+/* .card1{
+
+  display: flex;
+} */
+
+.nav-link.active{
+    font-weight: bold;  
+    text-decoration: underline;
+   text-underline-offset: 4px;
+    border-bottom: 3px solid rgb(29, 28, 28);   
+}
