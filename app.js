@@ -71,13 +71,13 @@ let google = document.querySelector(".goobtn")
 google && google.addEventListener("click", async () => {
     try {
         let redirect = window.location.hostname === "127.0.01"
-        ? window.location.origin + "/post.html"
-        : window.location.origin + "/signup-login"
+            ? window.location.origin + "/post.html"
+            : window.location.origin + "/signup-login"
 
         const { error } = await merg.auth.signInWithOAuth({
             provider: 'google',
             options: {
-                redirectTo:redirect,
+                redirectTo: redirect,
                 queryParams: { access_type: 'offline', prompt: 'consent' },
             },
         });
@@ -175,11 +175,11 @@ submitPost && submitPost.addEventListener("click", async () => {
 
 if (window.location.pathname == "/all-blog.html") {
 
-if (window.location.pathname.includes("my-blog.html")) {
-  document.querySelector(".myblog")?.classList.add("active");
-} else if (window.location.pathname.includes("all-blog.html")) {
-  document.querySelector(".allblog")?.classList.add("active");
-}
+    if (window.location.pathname.includes("my-blog.html")) {
+        document.querySelector(".myblog")?.classList.add("active");
+    } else if (window.location.pathname.includes("all-blog.html")) {
+        document.querySelector(".allblog")?.classList.add("active");
+    }
     try {
         const readAllPso = async () => {
             const { data, error } = await merg.from('post').select();
@@ -216,13 +216,13 @@ if (window.location.pathname.includes("my-blog.html")) {
 
 // my all post
 const myPost = async () => {
-document.addEventListener("DOMContentLoaded", () => {
-  if (window.location.pathname.includes("my-blog.html")) {
-  document.querySelector(".myblog")?.classList.add("active");
-} else if (window.location.pathname.includes("all-blog.html")) {
-  document.querySelector(".allblog")?.classList.add("active");
-}
-})
+    // document.addEventListener("DOMContentLoaded", () => {
+    //     if (window.location.pathname.includes("my-blog.html")) {
+    //         document.querySelector(".myblog")?.classList.add("active");
+    //     } else if (window.location.pathname.includes("all-blog.html")) {
+    //         document.querySelector(".allblog")?.classList.add("active");
+    //     }
+    // })
 
     const { data: { user } } = await merg.auth.getUser();
     const { data, error } = await merg
@@ -255,6 +255,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 }
+myPost()
 
 if (window.location.pathname == "/my-blog.html") {
     const current = document.getElementById('active');
@@ -373,3 +374,6 @@ async function edit(postId, postTitle, postDescription) {
 
     }
 }
+
+
+
