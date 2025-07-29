@@ -29,14 +29,41 @@ textarea.form-control {
   resize: none;
 }
 
-/* .card1{
 
-  display: flex;
-} */
+.nav-link.active-page {
+  font-weight: bold;
+  text-decoration: underline red;
+}
 
-/* .nav-link.active{
-    font-weight: bold;  
-    text-decoration: underline;
-   text-underline-offset: 4px;
-    border-bottom: 3px solid rgb(29, 28, 28);   
-} */
+
+.card {
+  transition: 0.25s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.card h6 {
+  font-size: 1rem;
+}
+
+.card p {
+  font-size: 0.9rem;
+}
+
+
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+.btn {
+  transition: 0.2s ease;
+}
+.btn:hover {
+  opacity: 0.9;
+}

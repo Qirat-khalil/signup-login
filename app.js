@@ -15,6 +15,19 @@ let userpass = document.querySelector(".userpass")
 let signbtn = document.querySelector(".signbtn")
 let fullName = document.querySelector(".fulname")
 
+let icon = document.getElementById("icon")
+
+if(userpass.type === "password"){
+    userpass.type = "text"
+    icon.classList.remove("fa-eye")
+     icon.classList.add("fa--slash")
+}else{
+    userpass.type ==="text"
+    userpass.type = "password"
+    icon.classList.remove("fa-eye")
+     icon.classList.add("fa--slash")
+}
+
 signbtn && signbtn.addEventListener("click", async () => {
 
     if (useremail && userpass) {
@@ -125,7 +138,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
         if (!window.location.pathname.includes("index.html") && window.location.pathname.includes("login.html")) {
             window.location.href = "index.html"
-            // disProf()
+            
         }
     }
     disProf()
@@ -153,50 +166,58 @@ submitPost && submitPost.addEventListener("click", async () => {
             },
         ])
         if (data) {
-            alert("posy successdully createf")
+            alert("post successfully created")
             window.location.href = "my-blog.html"
         }
         else {
             console.log(error.message);
 
-            document.getElementById("post-title").value = '';
-            document.getElementById("post-desc").value = '';
         }
+        // document.getElementById("post-title").value = '';
+        document.getElementById("post-desc").value = '';
     }
     catch (error) {
         // console.log(error?.message);
 
     }
+    document.getElementById("post-title").value = '';
+        document.getElementById("post-desc").value = '';
 })
 
 // read all post
 
+const currentPath = window.location.pathname;
+if (currentPath.includes("my-blog.html")) {
+    document.querySelector(".myblog")?.classList.add("active-page");
+}
+if (currentPath.includes("all-blog.html")) {
+    document.querySelector(".allblog")?.classList.add("active-page");
+}
 
 
 if (window.location.pathname == "/all-blog.html") {
 
-    if (window.location.pathname.includes("my-blog.html")) {
-        document.querySelector(".myblog")?.classList.add("active");
-    } else if (window.location.pathname.includes("all-blog.html")) {
-        document.querySelector(".allblog")?.classList.add("active");
-    }
+
     try {
         const readAllPso = async () => {
             const { data, error } = await merg.from('post').select();
             if (data) {
                 console.log(data);
-                const box = document.querySelector("#container")
+                const box = document.querySelector("#postList")
                 box.innerHTML = data.map(({ id, tittle, description }) => {
                     console.log(tittle, description);
 
-                    return (`
-                        <div id='${id}' class="card " style="width: 18rem;">
-                        <div class="card-body ">
-                            <h5 class="card-title">${tittle}</h5>
-                            <p class="card-text">${description}</p>
-                        </div>
-
-
+                    return (
+                        `<div class="card shadow-sm rounded-4 mt-4 border-0" style="width: 100%; max-width: 300px; background-color: #f8f9fa;">
+                            <div class="card-body d-flex flex-column justify-content-between">
+                                <div>
+                                    <h5 class="mb-2 fw-bold text-primary">${tittle}</h5>
+                                    <h6 class="text-secondary mb-0" style="min-height: 60px;">${description}</h6>
+                                </div>
+                                <div class="mt-3 text-end">
+                                    <span class="badge bg-light text-muted border">ID: ${id}</span>
+                                </div>
+                            </div>
                         </div>`)
                 }).join("")
 
@@ -211,18 +232,17 @@ if (window.location.pathname == "/all-blog.html") {
 
     }
 }
-// const current = document.getElementById('current');
-// current.style.textDecoration.remove() = 'underline red';
 
 // my all post
 const myPost = async () => {
-    // document.addEventListener("DOMContentLoaded", () => {
-    //     if (window.location.pathname.includes("my-blog.html")) {
-    //         document.querySelector(".myblog")?.classList.add("active");
-    //     } else if (window.location.pathname.includes("all-blog.html")) {
-    //         document.querySelector(".allblog")?.classList.add("active");
-    //     }
-    // })
+
+    const currentPath = window.location.pathname;
+    if (currentPath.includes("my-blog.html")) {
+        document.querySelector(".myblog")?.classList.add("active-page");
+    }
+    if (currentPath.includes("all-blog.html")) {
+        document.querySelector(".allblog")?.classList.add("active-page");
+    }
 
     const { data: { user } } = await merg.auth.getUser();
     const { data, error } = await merg
@@ -237,17 +257,21 @@ const myPost = async () => {
 
             console.log(tittle, description);
 
-            return (`<div id='${id}' class="card  card1" style="width: 18rem   background: #3d629bff; ; ">
-                        <div class="card-body">
-                            <h5 class="card-title">${tittle}</h5>
-                            <p class="card-text">${description}</p>
-                        </div>
-
-                        <div>
-                            <button class="delbtn" onclick="deletePost('${id}','${tittle}','${description}')">Delete</button>
-                              <button class="editbtn" onclick="edit('${id}')">Edit</button>
-                          </div>
-                    </div>`)
+            return (`
+                <div id="${id}" class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center mb-4">
+          <div class="card shadow rounded-4 border-0" style="width: 100%; max-width: 280px; background: #f1f4f9;">
+            <div class="card-body d-flex flex-column justify-content-between">
+              <div>
+                <h5 class="fw-bold text-primary mb-2">${tittle}</h5>
+                <h6 class="text-secondary mb-3" style="min-height: 60px;">${description}</h6>
+              </div>
+              <div class="d-flex justify-content-between">
+                <button class="btn btn-sm btn-danger rounded-3 fw-bold" onclick="deletePost('${id}', '${tittle}', '${description}')">Delete</button>
+                <button class="btn btn-sm btn-secondary rounded-3 fw-bold" onclick="edit('${id}')">Edit</button>
+              </div>
+            </div>
+          </div>
+        </div>`)
         })
 
     } else {
@@ -257,20 +281,15 @@ const myPost = async () => {
 }
 myPost()
 
-if (window.location.pathname == "/my-blog.html") {
-    const current = document.getElementById('active');
-    current.style.textDecoration = 'underline red';
-    try {
-        myPost()
-    } catch (error) {
-        console.log(error);
-    }
-}
 
-// if (window.location.pathname.includes("my-blog.html")){
-//     document.getElementById("active").classList.add("active")
-// }else if(window.location.pathname.includes("all-blog.html")){
-//      document.getElementById("current").classList.add("current")
+// if (window.location.pathname == "/my-blog.html") {
+//   const current = document.getElementById('active');
+//   current.style.textDecoration = 'underline red';
+try {
+    myPost();
+} catch (error) {
+    console.log(error);
+}
 // }
 
 // delete button
@@ -374,6 +393,9 @@ async function edit(postId, postTitle, postDescription) {
 
     }
 }
+
+
+
 
 
 
