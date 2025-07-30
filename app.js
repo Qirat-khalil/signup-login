@@ -17,17 +17,18 @@ let fullName = document.querySelector(".fulname")
 
 let icon = document.getElementById("icon")
 
-if(userpass.type === "password"){
-    userpass.type = "text"
-    icon.classList.remove("fa-eye")
-     icon.classList.add("fa--slash")
-}else{
-    userpass.type ==="text"
-    userpass.type = "password"
-    icon.classList.remove("fa-eye")
-     icon.classList.add("fa--slash")
-}
-
+if (userpass) {
+    if (userpass.type === "password") {
+        userpass.type = "text"
+        icon.classList.remove("fa-eye")
+        icon.classList.add("fa-slash")
+    } else {
+        userpass.type === "text"
+        userpass.type = "password"
+        icon.classList.remove("fa-eye")
+        icon.classList.add("fa--slash")
+    }
+    }
 signbtn && signbtn.addEventListener("click", async () => {
 
     if (useremail && userpass) {
@@ -108,6 +109,7 @@ async function disProf() {
         console.log(user);
         if (error) throw error
         if (user) {
+            console.log(document.querySelector(".prof-avatar"))
             if (document.querySelector(".prof-avatar")) {
                 document.querySelector(".prof-avatar").src = user.user_metadata?.avatar_url || 'https://www.gravatar.com/avatar/?d=mp'
                 document.querySelector(".user-name").textContent = user.user_metadata?.full_name || user.email
@@ -138,7 +140,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
         if (!window.location.pathname.includes("index.html") && window.location.pathname.includes("login.html")) {
             window.location.href = "index.html"
-            
+
         }
     }
     disProf()
@@ -181,7 +183,7 @@ submitPost && submitPost.addEventListener("click", async () => {
 
     }
     document.getElementById("post-title").value = '';
-        document.getElementById("post-desc").value = '';
+    document.getElementById("post-desc").value = '';
 })
 
 // read all post
@@ -253,7 +255,8 @@ const myPost = async () => {
         console.log(data);
 
         let myAllPost = document.querySelector("#myallPost")
-        myAllPost.innerHTML = data.map(({ id, tittle, description }) => {
+       if(myAllPost){
+         myAllPost.innerHTML = data.map(({ id, tittle, description }) => {
 
             console.log(tittle, description);
 
@@ -272,14 +275,15 @@ const myPost = async () => {
             </div>
           </div>
         </div>`)
-        })
+        })      
+       }
 
     } else {
         console.log(error);
 
     }
 }
-myPost()
+// myPost()
 
 
 // if (window.location.pathname == "/my-blog.html") {
